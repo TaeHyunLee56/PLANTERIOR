@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planterior</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+        :root{
+            --main-color:#95B018;
+            --sub-color:#E2B029;
+            --gray1:#F9F9F9;
+            --gray2:#A3A3A3;
+            --gray3:#666666;
+            --gray4:#262626;
+            --white:#ffffff;
+            --KR:'Noto Serif KR', serif;
+        }
+        .nav{
+            height: 80px;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 80px;
+        }
+        .logo{
+            color: var(--main-color);
+            font-family: var(--KR);
+            text-decoration: none;
+            font-size: 24px;
+            border-top: 1px solid var(--main-color);
+            border-bottom: 1px solid var(--main-color);
+        }
+        ul{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        li{
+            list-style: none;
+
+            position: relative;
+            margin-left: 48px;
+        }
+
+        li a{
+            text-decoration: none;
+            color: var(--gray4);
+            font-size: 16px;
+            line-height: 32px;
+
+            transition: all 0.2s ease-out;
+        }
+        li a:hover{
+            color: var(--main-color);
+        }
+        li a::before{
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 1px;
+            width: 0;
+            background-color: var(--main-color);
+            transition: width 0.3s ease-in-out;
+        }
+        li a:hover::before{
+            width: 100%;
+        }
+        li a::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            width: 0px;
+            background-color: var(--main-color);
+            transition: width 0.3s ease-in-out;
+        }
+        li a:hover::after{
+            width: 100%;
+        }
+        li .hover{
+            color: var(--main-color);
+        }
+
+        .footer{
+            height: 200px;
+            background-color: var(--gray1);
+            margin-top: 120px;
+            display: flex;
+            justify-content: space-between;
+            /* align-items: center; */
+            padding: 0 80px 40px 80px;
+        }
+        .footer-textA{
+            margin-top: auto;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .footer-textA p{
+            margin-right: 12px;
+        }
+        .footer-textB{
+            margin-top: auto;
+            text-align: center;
+        }
+        .footer-textB p{
+            margin-top: 20px;
+        }
+        .footer-textC{
+            margin-top: auto;
+        }
+
+        .h4{
+            font-size: 24px;
+            font-weight: 400;
+            color: var(--gray3);
+        }
+        .h3{
+            margin-bottom: 40px;
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--gray3);
+        }
+        .p1{
+            font-size: 16px;
+            color: var(--gray2);
+            line-height: 24px;
+        }
+        .p2{
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--white);
+            line-height: 48px;
+        }
+        .header{
+            text-align: center;
+            /* background-color: aqua; */
+            margin-top: 120px;
+        }
+
+        .conA{
+            margin-top: 120px;
+        }
+        .conA-content{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 1280px;
+            gap: 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .conA-item{
+            background-color: aquamarine;
+            width: 620px;
+            height: 420px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+        }
+
+        /* .conA-item p{
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 700;
+            background-color: rgba(163, 163, 163, 0.5);
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            margin-top: auto;
+            width: 100%;
+            opacity: 1;
+        }
+        .conA-hover{
+            opacity: 0;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+        .conA-item:hover .conA-item p{
+            opacity: 0;
+        }
+        .conA-item:hover .conA-hover{
+            opacity: 1;
+        } */
+
+        /* .conA-text{
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 700;
+            background-color: rgba(163, 163, 163, 0.5);
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            margin-top: auto;
+            width: 100%;
+            opacity: 1;
+        }
+        .conA-hover{
+            opacity: 0;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+        }
+        .conA-item:hover .conA-text{
+            opacity: 0;
+        }
+        .conA-item:hover .conA-hover{
+            opacity: 1;
+        } */
+
+        .conA-text{
+            position: absolute;
+            opacity: 1;
+            /* width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center; */
+            /* text-shadow: 5px 5px 30px var(--gray4); */
+            font-size: 24px;
+            color: var(--white);
+            font-weight: 700;
+            /* background-color: rgba(163, 163, 163, 0.5); */
+            background-color: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 40px 0;
+            border-radius: 0 0 20px 20px;
+            bottom: 0%;
+            width: 100%;
+
+
+        }
+        .conA-item:hover .conA-text{
+            opacity: 0;
+
+        }
+        .conA-item:hover{
+            flex-grow: 3;
+            opacity: 1;
+        }
+        #itemA{
+            background-image: url(https://i.postimg.cc/m2JDcqtR/image-91.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        #itemB{
+            background-image: url(https://i.postimg.cc/52yBJDDV/image-94.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        #itemC{
+            background-image: url(https://i.postimg.cc/zX12JDk1/image-93.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        #itemD{
+            background-image: url(https://i.postimg.cc/WbgRnf5s/image-92.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        #itemE{
+            background-image: url(https://i.postimg.cc/ryZ7M2PV/image-3.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        #itemF{
+            background-image: url(https://i.postimg.cc/3Jgj9gps/07.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            /* opacity: 0.5; */
+        }
+        .overlay{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+
+
+        }
+        .overlay p{
+            opacity: 0;
+            text-align: center;
+            transition: all 0.5s ease-in-out;
+
+            position: absolute;
+            bottom: 80%;
+            text-transform: uppercase;
+            /* overflow: hidden; */
+        }
+        .conA-item:hover .overlay p{
+            opacity: 1;
+            bottom: 25%;
+
+        }
+        .conA-item:hover .overlay{
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .conD{
+            /* height: 1145px; */
+            /* background-color: antiquewhite; */
+            margin-top: 120px;
+            text-align: center;
+        }
+        .conD h3{
+            color: var(--sub-color);
+            /* margin-bottom: 40px; */
+            font-size: 32px;
+            font-weight: 400;
+            /* color: var(--gray3); */
+        }
+        .conD-items{
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: 320px 320px 320px;
+            /* background-color: rgb(255, 255, 255); */
+            gap: 20px 40px;
+            width: 1060px;
+            /* margin-left: auto;
+            margin-right: auto; */
+            margin: 40px auto;;
+        }
+        .conD-item{
+            transition: all 0.3s ease-in;
+        }
+        .conD-item:hover{
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        }
+        .conD-item:nth-child(1){
+            background-color: blue;
+            grid-column: 1 / span 2;
+            background-image: url(https://i.postimg.cc/dtKtRdJZ/spacejoy-um-AXne-H4-Gh-A-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .conD-item:nth-child(2){
+            background-color: red;
+            grid-column: 3 / span 3;
+            background-image: url(https://i.postimg.cc/pLWW4Hh2/milk-tea-HBEDo-PQM6j-M-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center 65%;
+        }
+        .conD-item:nth-child(3){
+            background-color: aquamarine;
+            grid-column: 1 / span 3;
+            background-image: url(https://i.postimg.cc/2SSYT7My/hutomo-abrianto-9-Zvu-Wg8deho-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .conD-item:nth-child(4){
+            background-color: blueviolet;
+            grid-column: 4 / span 2;
+            background-image: url(https://i.postimg.cc/mkmXrCwp/c68c4933d52977f00373b9148151e6c5.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .conD-item:nth-child(5){
+            background-color: skyblue;
+            grid-column: 1 / span 2;
+            background-image: url(https://i.postimg.cc/W3X6mjkh/82e373bc2cfb46ebb79cad50295c4199.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .conD-item:nth-child(6){
+            background-color: aquamarine;
+            grid-column: 3 / span 3;
+            background-image: url(https://i.postimg.cc/QMqpssS0/spacejoy-Z3u-SM5-GVp-Fc-unsplash.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .button_sub{
+            padding: 4px 28px;
+            background-color: var(--sub-color);
+            border: 2px solid var(--sub-color);
+            border-radius: 16px;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+        .button_sub:hover{
+            background-color: var(--white);
+            border: 2px solid var(--sub-color);
+            color: var(--sub-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a class="logo" href="index.html"> 초 록 </a>
+        <ul>
+            <li><a href="sub1.html">플랜테리어</a></li>
+            <li><a href="sub2.html">식물 추천</a></li>
+            <li><a class="hover" href="sub4.html">인테리어</a></li>
+        </ul>
+    </div>
+
+    <div class="header">
+        <h3 class="h3">플랜테리어 아이디어</h3>
+        <p class="p1">다양한 아이디어들을 살펴보고 당신에게 딱 맞는 인테리어를 찾아보세요.</p>
+    </div>
+
+    <div class="conA">
+        <div class="conA-content">
+            <!-- <div class="conA-item">
+                <p>화이트 미니멀 인테리어에 더하는 생기</p>
+                <div class="conA-hover p2">
+                    화이트 인테리어에 작은 녹색 식물을 포인트로 넣으면<br>
+                    더욱 맑고 청량한 이미지를 살릴 수 있습니다.<br>
+                    화이트 미니멀리스트 인테리어를 선호하지만 다소 차가운 듯 경직된 느낌이<br>
+                    부담스럽다면, 플랜테리어 아이디어를 응용해보세요.<br>
+                </div>
+            </div>
+
+            <div class="conA-item">
+                <div class="conA-text">
+                    화이트 미니멀 인테리어에 더하는 생기
+                </div>
+                <p class="p2">
+                    화이트 인테리어에 작은 녹색 식물을 포인트로 넣으면<br>
+                    더욱 맑고 청량한 이미지를 살릴 수 있습니다.<br>
+                    화이트 미니멀리스트 인테리어를 선호하지만 다소 차가운 듯 경직된 느낌이<br>
+                    부담스럽다면, 플랜테리어 아이디어를 응용해보세요.<br>
+                </p>
+            </div> -->
+
+            <div class="conA-item" id="itemA">
+                <p class="conA-text">화이트 미니멀 인테리어에 더하는 생기</p>
+                <div class="overlay">
+                    <p class="p2">
+                        화이트 인테리어에 작은 녹색 식물을 포인트로 넣으면<br>
+                        더욱 맑고 청량한 이미지를 살릴 수 있습니다.<br>
+                        화이트 미니멀리스트 인테리어를 선호하지만 다소 차가운 듯 경직된 느낌이<br>
+                        부담스럽다면, 플랜테리어 아이디어를 응용해보세요.<br>
+                    </p>
+                </div>
+            </div>
+
+            <div class="conA-item" id="itemB">
+                <p class="conA-text">수직정원으로 만드는 완벽한 휴식처</p>
+                <div class="overlay">
+                    <p class="p2">
+                        베란다를 휴식처로 계획하고 여유 공간이 만들었다면<br>
+                        벽면에 식물을 채워 수직정원을 만들어보세요. 특수 판에 이끼나<br>
+                        열대 식물을 심어서 걸어두는 것만으로 쉽고 간단하게 완성되며<br>
+                        하단부에 작은 화단을 가꾸고 화려한 색의 꽃을 심는 것도 좋습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="conA-item" id="itemC">
+                <p class="conA-text">행잉 플랜트 활용하기</p>
+                <div class="overlay">
+                    <p class="p2">
+                        화분을 길게 늘어트려 장식하는 행잉 플랜트는 벽면에 시각적으로<br>
+                        임팩트있는 장식을 하고자 할 때 추천합니다.<br>
+                        소비하는 면적이 작고 넓은 벽면에 다채롭게 장식할 수 있기 때문에<br>
+                        주방 조리대 벽면에 길게 장식하기 유용합니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="conA-item" id="itemD">
+                <p class="conA-text">인더스트리얼 스타일과의 하모니</p>
+                <div class="overlay">
+                    <p class="p2">
+                        자유분방한 아름다움을 보여주는 인더스트리얼 스타일에도<br>
+                        식물은 좋은 장식 포인트가 됩니다. 전체적인 분위기와 함께하는<br>
+                        철재나 목재, 스톤 화분과 볼륨감 있는 녹색 식물을 활용해<br>
+                        산업적인 이미지와 자연의 매력적인 하모니를 연출해보는 것도 좋습니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="conA-item" id="itemE">
+                <p class="conA-text">카페 같은 베란다</p>
+                <div class="overlay">
+                    <p class="p2">
+                        베란다에 카페 분위기의 휴식 공간을 마련하고 싶다면<br>
+                        나지막한 나무를 함께 구성하는 것을 추천합니다.<br>
+                        탁 트인 전망, 그리고 싱그러운 기운을 나눠주는 작은 녹색 나무 하나라면<br>
+                        작은 아파트 베란다라 하더라도 그 가치가 상당히 높아집니다.
+                    </p>
+                </div>
+            </div>
+
+            <div class="conA-item" id="itemF">
+                <p class="conA-text">와일드한 파벽돌 아트월과의 조화</p>
+                <div class="overlay">
+                    <p class="p2">
+                        파벽돌의 와일드한 질감으로 아트월 포인트를 준 다이닝룸 인테리어에<br>
+                        작은 나무 화분과 벽걸이형 화분을 더해 장식 효과를 주는 것도 좋습니다.<br>
+                        볼륨감 있는 녹색 식물이 벽의 바닥이 아닌 표면을 장식하면서<br>
+                        더욱 입체감 있는 아름다움을 느낄 수 있습니다.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="conD">
+        <h3>PLANTERIOR</h3>
+        <div class="conD-items">
+            <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <!-- <div class="conD-item"></div>
+            <div class="conD-item"></div>
+            <div class="conD-item"></div> -->
+        </div>
+        <a class="button_sub" href="sub4.html">바로가기</a>
+    </div>
+
+    <div class="footer">
+        <div class="footer-textA">
+            <p class="p1">Follow us</p>
+            <a href="#"><img src="https://i.postimg.cc/SsFznwPN/Instagram.png" alt="#" width="36px"></a>
+            <a href="#"><img src="https://i.postimg.cc/DZvnp6JP/Twitter.png" alt="#" width="36px"></a>
+        </div>
+        <div class="footer-textB">
+            <a class="logo" href="#">초 록</a>
+            <p class="p1">초록 ㅣ (c) 2022. All Rights Reserved.</p>
+        </div>
+        <div class="footer-textC">
+            <p class="p1">Contact : green@gmail.com</p>
+        </div>
+    </div>
+</body>
+</html>
