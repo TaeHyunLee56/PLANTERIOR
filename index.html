@@ -44,19 +44,51 @@
             display: flex;
             justify-content: center;
             align-items: center;
+
         }
         li{
             list-style: none;
+
+            position: relative;
+            margin-left: 48px;
         }
+
         li a{
             text-decoration: none;
             color: var(--gray4);
             font-size: 16px;
-            margin-left: 48px;
+            line-height: 32px;
+
             transition: all 0.2s ease-out;
         }
         li a:hover{
             color: var(--main-color);
+        }
+        li a::before{
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 1px;
+            width: 0;
+            background-color: var(--main-color);
+            transition: width 0.3s ease-in-out;
+        }
+        li a:hover::before{
+            width: 100%;
+        }
+        li a::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 1px;
+            width: 0px;
+            background-color: var(--main-color);
+            transition: width 0.3s ease-in-out;
+        }
+        li a:hover::after{
+            width: 100%;
         }
 
         .header{
@@ -67,7 +99,7 @@
             justify-content: center;
         }
         .header-content{
-            width: 1440px;
+            min-width: 1440px;
             height: 100%;
             margin-left: auto;
             margin-right: auto;
@@ -143,6 +175,12 @@
             color: var(--main-color);
         }
         .conA h2 #subcol{
+            color: var(--sub-color);
+        }
+        .conA .span1{
+            color: var(--main-color);
+        }
+        .conA .span2{
             color: var(--sub-color);
         }
 
@@ -313,10 +351,10 @@
             margin: 40px auto;;
         }
         .conD-item{
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s ease-in;
         }
         .conD-item:hover{
-            box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
         }
         .conD-item:nth-child(1){
             background-color: blue;
@@ -329,10 +367,10 @@
         .conD-item:nth-child(2){
             background-color: red;
             grid-column: 3 / span 3;
-            background-image: url(https://i.postimg.cc/kXRNpLdm/a291377999316a865c8673ba6e86f065-1.jpg);
+            background-image: url(https://i.postimg.cc/3RPNKMJx/timothy-buck-psrlo-Dba-Zc8-unsplash.jpg);
             background-size: cover;
             background-repeat: no-repeat;
-            background-position: center 65%;
+            background-position: center 48%;
         }
         .conD-item:nth-child(3){
             background-color: aquamarine;
@@ -361,7 +399,7 @@
         .conD-item:nth-child(6){
             background-color: aquamarine;
             grid-column: 3 / span 3;
-            background-image: url(https://i.postimg.cc/fT3Qyc6K/62946aa021bd1c4fc0c9b7b7c0ee5182.jpg);
+            background-image: url(https://i.postimg.cc/zvNT7RZN/jared-rice-Pibra-WHb4h8-unsplash.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
@@ -439,7 +477,7 @@
             <p class="p1">
                 녹색 힐링이 꾸준한 관심사인 요즘,<br>
                 곳곳에 소품으로 식물이나 화분을 이용해 포인트를 주는 인테리어를<br>
-                '플랜테리어'라고 합니다.
+                '<span class="span1">플랜</span><span class="span2">테리어</span>'라고 합니다.
             </p>
         </div>
         <div class="conA-img"></div>
